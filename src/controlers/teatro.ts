@@ -58,18 +58,18 @@ export const updateTheatre = async (req: Request, res: Response) => {
     const { id } = req.params;
 
     try {
-            const theatre = await Theatre.findByPk(id);
+        const theatre = await Theatre.findByPk(id);
 
-    if (theatre) {
-        await theatre.update(body);
-        res.json({
-            msg: "Theatre actualizado con éxito"
-        });
-    } else {
-        res.status(404).json({
-            msg: `No existe un producto con el id ${id}.`,
-        });
-    }
+        if (theatre) {
+            await theatre.update(body);
+            res.json({
+                msg: "Theatre actualizado con éxito"
+            });
+        } else {
+            res.status(404).json({
+                msg: `No existe un producto con el id ${id}.`,
+            });
+        }
     } catch (error) {
         console.log(error);
 
@@ -77,6 +77,6 @@ export const updateTheatre = async (req: Request, res: Response) => {
             msg: "Ocurrió un error al actualizar"
         });
     }
-    
+
 
 };
