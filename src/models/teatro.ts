@@ -8,9 +8,6 @@ const Theatre = db.define("salas", {
     address: {
         type: DataTypes.STRING,
     },
-    location: {
-        type: DataTypes.STRING,
-    },
     phone: {
         type: DataTypes.STRING,
     },
@@ -20,12 +17,14 @@ const Theatre = db.define("salas", {
     accessible: {
         type: DataTypes.BOOLEAN,
     },
-    bar: {
-        type: DataTypes.BOOLEAN,
+    latitude: {
+        type: DataTypes.NUMBER,
     },
-    child_friendly: {
-        type: DataTypes.BOOLEAN,
+    longitude: {
+        type: DataTypes.NUMBER,
     },
+
+
   
 
 },
