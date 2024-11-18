@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Theatre from "../models/teatro";
+import { Sequelize } from "sequelize";
 
 export const getTheatres = async (req: Request, res: Response) => {
     const theatreList = await Theatre.findAll();
@@ -77,6 +78,17 @@ export const updateTheatre = async (req: Request, res: Response) => {
             msg: "Ocurrió un error al actualizar"
         });
     }
+    
+};
 
+export const getAccessibility = async (req: Request, res: Response) => {
+    const accessibilityList = await Theatre.findAll({
+        attributes: [
+            'accessible',
+          [Sequelize.fn('COUNT', Sequelize.col('accessible')), 'count']
+        ],
+        group: ['accessible']
+      });
 
+    res.json(accessibilityList);
 };
