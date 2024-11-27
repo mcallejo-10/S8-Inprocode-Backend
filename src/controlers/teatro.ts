@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Theatre from "../models/teatro";
 import { Sequelize, QueryTypes } from "sequelize";
 import sequelize from "../db/connections";
+import Evento from "../models/evento";
 
 
 export const getTheatres = async (req: Request, res: Response) => {
@@ -109,4 +110,9 @@ export const getSeatCount = async (req: Request, res: Response) => {
       
       res.json(counts);
 
+};
+
+export const getEvents = async (req: Request, res: Response) => {
+    const eventList = await Evento.findAll();
+    res.json(eventList);
 };
