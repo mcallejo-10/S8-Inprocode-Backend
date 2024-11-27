@@ -106,6 +106,7 @@ export const getSeatCount = async (req: Request, res: Response) => {
           SUM(CASE WHEN seat_count >= 1000 THEN 1 ELSE 0 END) AS greater_than_1000
         FROM salas;
       `, { type: QueryTypes.SELECT });
+      
       res.json(counts);
 
 };
