@@ -29,12 +29,12 @@ export const deleteTheatre = async (req: Request, res: Response) => {
     const theatre = await Theatre.findByPk(id);
     if (!theatre) {
         res.status(404).json({
-            msg: `No existe un producto con el id ${id}.`,
+            msg: `No existe un teatro con el id ${id}.`,
         });
     } else {
         await theatre.destroy();
         res.json({
-            msg: "El producto fue elimibado con exito",
+            msg: "El teatro fue elimibado con exito",
         });
     }
 };
@@ -112,7 +112,79 @@ export const getSeatCount = async (req: Request, res: Response) => {
 
 };
 
-export const getEvents = async (req: Request, res: Response) => {
+export const getAllEvents = async (req: Request, res: Response) => {
     const eventList = await Evento.findAll();
     res.json(eventList);
+};
+
+export const getEvent = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const evento = await Evento.findByPk(id);
+
+    if (evento) {
+        res.json(evento);
+    } else {
+        res.status(404).json({
+            msg: `No existe un evento con el id ${id}.`,
+        });
+    }
+};
+
+
+export const deleteEvent = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const evento = await Evento.findByPk(id);
+    if (!evento) {
+        res.status(404).json({
+            msg: `No existe un evento con el id ${id}.`,
+        });
+    } else {
+        await evento.destroy();
+        res.json({
+            msg: "El evento fue elimibado con exito",
+        });
+    }
+};
+
+
+export const updateEvent = async (req: Request, res: Response) => {
+    const { body } = req;
+    const { id } = req.params;
+
+    try {
+        const evento = await Theatre.findByPk(id);
+        if (evento) {
+            await evento.update(body);
+            res.json({
+                msg: "Evento actualizado con éxito"
+            });
+        } else {
+            res.status(404).json({
+                msg: `No existe un evento con el id ${id}.`,
+            });
+        }
+    } catch (error) {
+        console.log(error);
+
+        res.json({
+            msg: "Ocurrió un error al actualizar"
+        });
+    }
+    
+};
+
+export const postEvent = async (req: Request, res: Response) => {
+    const { body } = req;
+    try {
+        await Theatre.create(body)
+        res.json({
+            msg: "Theatre agregado con éxito"
+        });
+    } catch (error) {
+        console.log(error);
+
+        res.json({
+            msg: "Ocurrió un error al agregar"
+        });
+    }
 };
