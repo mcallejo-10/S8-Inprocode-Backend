@@ -7,15 +7,15 @@ const Evento = db.define("eventos", {
     },
     description: {
         type: DataTypes.STRING,
-    },   
-    startAt: {
+    },
+     startAt: {
         type: DataTypes.STRING,
     },
     endAt: {
         type: DataTypes.STRING,
     },
-    allDay: {
-        type: DataTypes.BOOLEAN
+    color: {
+        type: DataTypes.STRING
     }
 },
 {

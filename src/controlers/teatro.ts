@@ -152,7 +152,7 @@ export const updateEvent = async (req: Request, res: Response) => {
     const { id } = req.params;
 
     try {
-        const evento = await Theatre.findByPk(id);
+        const evento = await Evento.findByPk(id);
         if (evento) {
             await evento.update(body);
             res.json({
@@ -176,9 +176,9 @@ export const updateEvent = async (req: Request, res: Response) => {
 export const postEvent = async (req: Request, res: Response) => {
     const { body } = req;
     try {
-        await Theatre.create(body)
+        await Evento.create(body)
         res.json({
-            msg: "Theatre agregado con éxito"
+            msg: "Evento agregado con éxito"
         });
     } catch (error) {
         console.log(error);
