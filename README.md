@@ -28,20 +28,32 @@ Ejecuta el siguiente comando para instalar las dependencias del proyecto:
 npm install
 ```
 
-## Configuración de la base de datos
+## Importación de la base de datos## Importación de la base de datos
 
-1. Inicia tu servidor MySQL con **XAMPP** u otra herramienta similar. 
-2. Crea una base de datos llamada `inprocode` (o modifica el nombre en el archivo de configuración si usas otro nombre).  
-3. Configura las credenciales de acceso a la base de datos en el archivo `.env` ubicado en el directorio raíz. El contenido del archivo debe tener el siguiente formato:
+Para importar la base de datos, sigue estos pasos:
 
-```env
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=tu_contraseña
-DB_NAME=inprocode
-DB_DIALECT=mysql
-PORT=3000
-```
+1. Asegúrate de tener una base de datos creada en tu servidor de base de datos. Puedes crear una base de datos ejecutando el siguiente comando en tu cliente de base de datos:
+
+    ```sql
+    CREATE DATABASE nombre_de_tu_base_de_datos;
+    ```
+
+2. Ubica el archivo `teatro.sql` en tu proyecto. Este archivo contiene las instrucciones SQL necesarias para crear y poblar las tablas de la base de datos.
+
+3. Importa el archivo `teatro.sql` en tu base de datos. Puedes hacerlo utilizando la línea de comandos de tu sistema operativo. Ejecuta el siguiente comando, reemplazando `nombre_de_tu_base_de_datos` con el nombre de tu base de datos y `usuario` con tu nombre de usuario de la base de datos:
+
+    ```bash
+    mysql -u usuario -p nombre_de_tu_base_de_datos < ruta/al/archivo/teatro.sql
+    ```
+
+4. Ejecuta las migraciones para generar las tablas en la base de datos. Usa este comando:
+
+    ```bash
+    npm run migrate
+    ```
+
+Siguiendo estos pasos, deberías tener tu base de datos configurada y lista para usar en tu proyecto.
+
 
 4. Ejecuta las migraciones para generar las tablas en la base de datos. Usa este comando:
 
@@ -59,53 +71,10 @@ npm run dev
 
 El servidor estará disponible en [http://localhost:3000](http://localhost:3000).
 
-## Estructura del proyecto
 
-```plaintext
-├── config/           # Configuración de Sequelize
-├── controllers/      # Lógica de negocio de los endpoints
-├── models/           # Definición de los modelos de Sequelize
-├── routes/           # Rutas de la API
-├── migrations/       # Migraciones de la base de datos
-├── .env              # Variables de entorno
-├── package.json      # Dependencias del proyecto
-└── server.js         # Punto de entrada del servidor
-```
 
-## Rutas de la API
 
-Aquí tienes una lista de las rutas principales del backend:
 
-### Usuarios
-- **GET** `/users` – Obtiene todos los usuarios.
-- **POST** `/users` – Crea un nuevo usuario.
-- **PUT** `/users/:id` – Actualiza un usuario existente.
-- **DELETE** `/users/:id` – Elimina un usuario.
-
-### Eventos
-- **GET** `/events` – Obtiene todos los eventos.
-- **POST** `/events` – Crea un nuevo evento.
-- **PUT** `/events/:id` – Actualiza un evento existente.
-- **DELETE** `/events/:id` – Elimina un evento.
-
-## Desarrollo y contribución
-
-Si deseas contribuir al proyecto, sigue estos pasos:
-
-1. Crea una nueva rama para tus cambios:
-   ```bash
-   git checkout -b nombre-de-tu-rama
-   ```
-2. Realiza tus modificaciones y verifica que todo funcione correctamente.
-3. Haz un commit de tus cambios:
-   ```bash
-   git commit -m "Descripción de los cambios"
-   ```
-4. Sube tus cambios al repositorio:
-   ```bash
-   git push origin nombre-de-tu-rama
-   ```
-5. Crea un pull request desde GitHub.
 
 ## Recursos adicionales
 
@@ -114,6 +83,4 @@ Si deseas contribuir al proyecto, sigue estos pasos:
 - [Sequelize Documentation](https://sequelize.org/)
 - [MySQL Documentation](https://dev.mysql.com/doc/)
 
----
 
-¡Gracias por contribuir al proyecto **Inprocode**!
