@@ -46,22 +46,15 @@ Para importar la base de datos, sigue estos pasos:
     mysql -u usuario -p nombre_de_tu_base_de_datos < ruta/al/archivo/teatro.sql
     ```
 
-4. Ejecuta las migraciones para generar las tablas en la base de datos. Usa este comando:
 
-    ```bash
-    npm run migrate
-    ```
-
-Siguiendo estos pasos, deberías tener tu base de datos configurada y lista para usar en tu proyecto.
-
-
-4. Ejecuta las migraciones para generar las tablas en la base de datos. Usa este comando:
-
-```bash
-npx sequelize db:migrate
-```
 
 ## Inicio del servidor
+
+Compila el ts con el siguiente comando:
+
+```bash
+npm run build
+```
 
 Inicia el servidor en modo desarrollo con el siguiente comando:
 
