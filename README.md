@@ -40,12 +40,7 @@ Para importar la base de datos, sigue estos pasos:
 
 2. Ubica el archivo `teatro.sql` en tu proyecto. Este archivo contiene las instrucciones SQL necesarias para crear y poblar las tablas de la base de datos.
 
-3. Importa el archivo `teatro.sql` en tu base de datos. Puedes hacerlo utilizando la línea de comandos de tu sistema operativo. Ejecuta el siguiente comando, reemplazando `nombre_de_tu_base_de_datos` con el nombre de tu base de datos y `usuario` con tu nombre de usuario de la base de datos:
-
-    ```bash
-    mysql -u usuario -p nombre_de_tu_base_de_datos < ruta/al/archivo/teatro.sql
-    ```
-
+3. Importa el archivo `teatro.sql` en tu base de datos. 
 
 
 ## Inicio del servidor
